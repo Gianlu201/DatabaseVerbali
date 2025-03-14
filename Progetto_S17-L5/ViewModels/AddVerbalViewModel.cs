@@ -45,7 +45,7 @@ namespace Progetto_S17_L5.ViewModels
         public Guid RegisterId { get; set; }
 
         [Display(Name = "Violation")]
-        public Guid ViolationId { get; set; }
+        public List<Guid>? ViolationId { get; set; }
 
         // navigazione
         [ForeignKey("RegisterId")]

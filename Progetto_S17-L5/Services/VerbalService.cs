@@ -86,15 +86,19 @@ namespace Progetto_S17_L5.Services
                     RegisterId = addVerbalViewModel.RegisterId,
                 };
 
-                var verbalViolation = new VerbalViolation()
+                foreach (var violation in addVerbalViewModel.ViolationId)
                 {
-                    VerbalViolationId = Guid.NewGuid(),
-                    ViolationId = addVerbalViewModel.ViolationId,
-                    VerbalId = newGuid,
-                };
+                    var verbalViolation = new VerbalViolation()
+                    {
+                        VerbalViolationId = Guid.NewGuid(),
+                        ViolationId = violation,
+                        VerbalId = newGuid,
+                    };
+
+                    _context.VerbalViolation.Add(verbalViolation);
+                }
 
                 _context.Verbals.Add(verbal);
-                _context.VerbalViolation.Add(verbalViolation);
 
                 return await TrySaveChangesAsync();
             }
