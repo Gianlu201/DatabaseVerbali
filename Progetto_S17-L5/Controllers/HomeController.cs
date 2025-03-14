@@ -1,16 +1,17 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using Progetto_S17_L5.Services;
 using Progetto_S17_L5.ViewModels;
 
 namespace Progetto_S17_L5.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly HomeService _homeService;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(HomeService homeService)
     {
-        _logger = logger;
+        _homeService = homeService;
     }
 
     public IActionResult Index()
@@ -18,7 +19,29 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult Other()
+    {
+        return View();
+    }
+
+    public async Task<IActionResult> OptionOne()
+    {
+        var result = await _homeService.OptionOneAsync();
+
+        return View(result);
+    }
+
+    public async Task<IActionResult> OptionTwo()
+    {
+        return View();
+    }
+
+    public async Task<IActionResult> OptionThree()
+    {
+        return View();
+    }
+
+    public async Task<IActionResult> OptionFour()
     {
         return View();
     }

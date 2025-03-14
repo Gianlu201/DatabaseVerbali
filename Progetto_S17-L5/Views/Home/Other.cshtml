@@ -1,0 +1,14 @@
+﻿@{
+    ViewData["Title"] = "Other options";
+}
+
+<h1>Altre opzioni</h1>
+
+<div>
+    <ul class="d-flex flex-column align-items-start">
+        <a asp-controller="Home" asp-action="OptionOne" class="btn btn-link">totale dei verbali raggruppati per trasgressore</a>
+        <a asp-controller="Home" asp-action="OptionTwo" class="btn btn-link">totale dei punti decurtati raggruppati per trasgressore</a>
+        <a asp-controller="Home" asp-action="OptionThree" class="btn btn-link">info per verbali che superano i 10 punti</a>
+        <a asp-controller="Home" asp-action="OptionFour" class="btn btn-link">verbali con importi maggiori ai €400</a>
+    </ul>
+</div>
