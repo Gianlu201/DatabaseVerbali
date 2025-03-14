@@ -129,5 +129,47 @@ namespace Progetto_S17_L5.Services
                 return new List<OptionThreeViewModel>();
             }
         }
+
+        public async Task<List<OptionFourViewModel>> OptionFourAsync()
+        {
+            try
+            {
+                var verbalList = await _context
+                    .Verbals.Select(g => new
+                    {
+                        VerbalId = g.VerbalId,
+                        TrasgressorName = g.Register.Name,
+                        TrasgressorSurnamename = g.Register.Surname,
+                        TrasgressorFiscalCode = g.Register.FiscalCode,
+                        VerbalAmount = g.Amount,
+                        VerbalDate = g.VerbalDate,
+                    })
+                    .Where(v => v.VerbalAmount > 400)
+                    .ToListAsync();
+
+                var optionOneList = new List<OptionFourViewModel>();
+
+                foreach (var item in verbalList)
+                {
+                    optionOneList.Add(
+                        new OptionFourViewModel()
+                        {
+                            VerbalId = item.VerbalId,
+                            Name = item.TrasgressorName,
+                            Surname = item.TrasgressorSurnamename,
+                            FiscalCode = item.TrasgressorFiscalCode,
+                            ViolationDate = item.VerbalDate,
+                            Amount = item.VerbalAmount,
+                        }
+                    );
+                }
+
+                return optionOneList;
+            }
+            catch
+            {
+                return new List<OptionFourViewModel>();
+            }
+        }
     }
 }

@@ -23,10 +23,10 @@
             @foreach (var element in Model)
             {
                 <tr>
-                    <td>@element.Amount</td>
+                    <td>€@element.Amount</td>
                     <td>@element.Surname</td>
                     <td>@element.Name</td>
-                    <td>@element.ViolationDate.ToString("yyyy-MM-dd")</td>
+                    <td>@element.ViolationDate.ToString("dd-MM-yyyy")</td>
                     <td>@element.Points</td>
                 </tr>
             }

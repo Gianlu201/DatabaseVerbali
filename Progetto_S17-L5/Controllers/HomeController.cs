@@ -47,7 +47,9 @@ public class HomeController : Controller
 
     public async Task<IActionResult> OptionFour()
     {
-        return View();
+        var result = await _homeService.OptionFourAsync();
+
+        return View(result);
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
