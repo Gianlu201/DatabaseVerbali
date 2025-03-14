@@ -15,6 +15,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped<RegisterService>();
 builder.Services.AddScoped<ViolationService>();
+builder.Services.AddScoped<VerbalService>();
 
 var app = builder.Build();
 

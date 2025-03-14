@@ -1,0 +1,50 @@
+﻿@model VerbalsListViewModel
+
+@{
+    ViewData["Title"] = "Verbals";
+}
+
+<h1>Verbali</h1>
+
+<div>
+    <a class="btn btn-info" asp-controller="Verbal" asp-action="AddVerbal">Add new verbal</a>
+</div>
+
+@if(Model.Verbals != null && Model.Verbals.Count > 0) {
+    <table>
+        <thead>
+            <tr>
+                <th>VerbalId</th>
+                <th>Fiscal code</th>
+                <th>Verbal date</th>
+                <th>Amount</th>
+                <th>Points deduction</th>
+                <th>Violation description</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var verbal in Model.Verbals)
+            {
+                <tr>
+                    <td>@verbal.VerbalId</td>
+                    <td>@verbal.Register.FiscalCode</td>
+                    <td>@verbal.VerbalDate.ToString("dd-mm-yyyy")</td>
+                    <td>@verbal.Amount</td>
+                    <td>@verbal.PointsDeduction</td>
+                    <td style="max-width: 500px" class="overflow-hidden">
+                        <ul>
+                        @foreach(var violation in verbal.VerbalViolations)
+                        {
+                            <li>@violation.Violation.Description</li>
+                        }
+                        </ul>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p class="lead text-secondary">No verbal found in database!</p>
+}

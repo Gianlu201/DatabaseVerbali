@@ -1,0 +1,65 @@
+﻿@model AddVerbalViewModel
+
+@{
+    ViewData["Title"] = "Add verbal";
+    var registersList = ViewBag.Registers as RegistersListViewModel;
+    var violationsList = ViewBag.Violations as ViolationsListViewModel;
+}
+
+<h1>Aggiungi anagrafica</h1>
+
+<form method="post" asp-controller="Verbal" asp-action="AddVerbal">
+    <div>
+        <label class="form-label" for="verbalDate" asp-for="VerbalDate"></label>
+        <input type="date" id="verbalDate" class="form-control" asp-for="VerbalDate" />
+        <span asp-validation-for="VerbalDate"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="verbalTranscriptionDate" asp-for="VerbalTranscriptionDate"></label>
+        <input type="date" id="verbalTranscriptionDate" class="form-control" asp-for="VerbalTranscriptionDate" />
+        <span asp-validation-for="VerbalTranscriptionDate"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="verbalAddress" asp-for="VerbalAddress"></label>
+        <input id="verbalAddress" class="form-control" asp-for="VerbalAddress" />
+        <span asp-validation-for="VerbalAddress"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="officerName" asp-for="OfficerName"></label>
+        <input id="officerName" class="form-control" asp-for="OfficerName" />
+        <span asp-validation-for="OfficerName"></span>
+    </div>
+    
+    <div>
+        <label class="form-label" for="amount" asp-for="Amount"></label>
+        <input type="number" step="0.01" min="0" id="amount" class="form-control" asp-for="Amount" />
+        <span asp-validation-for="Amount"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="pointsDeduction" asp-for="PointsDeduction"></label>
+        <input type="number" step="1" min="0" id="pointsDeduction" class="form-control" asp-for="PointsDeduction" />
+        <span asp-validation-for="PointsDeduction"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="registerId" asp-for="RegisterId"></label>
+        <select id="registerId" class="form-select" asp-for="RegisterId" asp-items="@(new SelectList(registersList?.Registers, "RegisterId", "FiscalCode"))"></select>
+    </div>
+
+    <div>
+        <label class="form-label" for="violationId" asp-for="ViolationId"></label>
+        <select id="violationId" class="form-select" asp-for="ViolationId" asp-items="@(new SelectList(violationsList?.Violations, "ViolationId", "Description"))"></select>
+    </div>
+
+    <div>
+        <button class="btn btn-success">Save</button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
