@@ -8,10 +8,10 @@
 
 @if(Model.Violations != null && Model.Violations.Count >0)
 {
-    <ol>
+    <ol class="list-group list-group-numbered">
     @foreach(var violation in Model.Violations)
     {
-        <li class="my-2">@violation.Description</li>
+        <li class="list-group-item list my-2">@violation.Description</li>
     }
     </ol>
 }

@@ -4,5 +4,25 @@
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <p><b>N.B.</b> Prima di testare si possono aggiungere i seguenti verbali al database tramite SQL, in fase di realizzazione database tramite Fluent API mi è stato restituito un errore sull'inserimento dinamico del Guid e quindi ho dovuto inserire dei Guid fissi per la creazione di dati per popolare le tabelle'</p>
+    <p>Ovviamente per il resto la piattaforma funziona correttamente andando a popolare le tabelle e generando le connessioni tra gli elementi in modo autonomo</p>
+
+
+    <div class="text-start">
+    <code>
+        INSERT INTO Verbals VALUES
+        ('5d7a3e4b-9c1f-2a8b-0d6c-4f2e5a3b7d1c', '2009-10-15', '2009-10-20', 'Via Marco Polo, 34', 'Sg. Marco Belli', 400, 3, 'B2490619-20B1-443F-A323-6E26E91E6F6E'),
+        ('9b3e5a2d-1c7f-4a8b-0d6c-2f5e7a3b1d4c', '2009-05-15', '2009-05-25', 'Via Dei Giusti, 43', 'Mr. Aldo Baglio', 230, 5, 'A4EBFF23-952D-48BB-A65D-8DA5E818C022');
+    </code>
+
+    <br/>
+    <br/>
+
+    <code>
+        Insert INTO VerbalViolation VALUES
+        ('7a3b1d4c-9f5e-2a8b-0d6c-4f2e5a3d7b1c', '5d7a3e4b-9c1f-2a8b-0d6c-4f2e5a3b7d1c', '72024EE1-36C6-430C-958C-1082957E604B'),
+        ('2c5e7a3b-9d1f-4a8b-0d6c-3f2e5a7b1d4c', '9b3e5a2d-1c7f-4a8b-0d6c-2f5e7a3b1d4c', '1765429A-A462-44A9-A414-4FACC897FD25'),
+        ('1d7a3e5b-9c2f-4a8b-0d6c-5f2e3a7b1d4c', '9b3e5a2d-1c7f-4a8b-0d6c-2f5e7a3b1d4c', '29E939CC-F9ED-4F75-B751-6C4619015F76');
+    </code>
+    </div>
 </div>
