@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Progetto_S17_L5.Data;
 
@@ -11,9 +12,11 @@ using Progetto_S17_L5.Data;
 namespace Progetto_S17_L5.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250314140449_Initial2")]
+    partial class Initial2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,7 +78,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Milano",
                             FiscalCode = "RSSGLI90A01F205X",
                             Name = "Giulia",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Rossi"
                         },
                         new
@@ -86,7 +88,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Roma",
                             FiscalCode = "BNCMRC85M01H501Y",
                             Name = "Marco",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Bianchi"
                         },
                         new
@@ -97,7 +98,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Torino",
                             FiscalCode = "VRDLSA72D55L219P",
                             Name = "Alessandra",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Verdi"
                         },
                         new
@@ -108,7 +108,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Firenze",
                             FiscalCode = "NRILCU85C01D612N",
                             Name = "Luca",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Neri"
                         },
                         new
@@ -119,7 +118,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Napoli",
                             FiscalCode = "GLLLRA90A01F839T",
                             Name = "Laura",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Gialli"
                         },
                         new
@@ -130,7 +128,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Bologna",
                             FiscalCode = "BLNDRE80B01L219W",
                             Name = "Andrea",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Blu"
                         },
                         new
@@ -141,7 +138,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Palermo",
                             FiscalCode = "GRGSFA96C41H501D",
                             Name = "Sofia",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Grigi"
                         },
                         new
@@ -152,7 +148,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Catania",
                             FiscalCode = "GLLPLA84M01H501Q",
                             Name = "Paolo",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Galli"
                         },
                         new
@@ -163,7 +158,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Verona",
                             FiscalCode = "RNCMTN92A41F205X",
                             Name = "Martina",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Arancio"
                         },
                         new
@@ -174,7 +168,6 @@ namespace Progetto_S17_L5.Migrations
                             City = "Genova",
                             FiscalCode = "MRNFRN75C01L219B",
                             Name = "Francesco",
-                            Picture = "uploads\\images\\default.png",
                             Surname = "Marroni"
                         });
                 });
