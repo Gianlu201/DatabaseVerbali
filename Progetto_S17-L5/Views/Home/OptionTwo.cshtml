@@ -1,5 +1,39 @@
-﻿@{
+﻿@model List<OptionTwoViewModel>
+
+@{
     ViewData["Title"] = "OptionTwo";
 }
 
 <h1>OptionTwo</h1>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Fiscal code</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Total points</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var element in Model)
+            {
+                <tr>
+                    <td>@element.FiscalCode</td>
+                    <td>@element.Name</td>
+                    <td>@element.Surname</td>
+                    <td>@element.TotPoints</td>
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+}
+else
+{
+    <p class="lead text-secondary">No results found, try again!</p>
+}

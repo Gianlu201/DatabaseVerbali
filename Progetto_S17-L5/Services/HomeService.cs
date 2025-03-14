@@ -18,7 +18,6 @@ namespace Progetto_S17_L5.Services
         {
             try
             {
-                //var verbalsList = await _context.Verbals.GroupBy(r => r.RegisterId).ToListAsync();
                 var verbalList = await _context
                     .Verbals.GroupBy(v => v.Register.RegisterId)
                     .Select(g => new
@@ -50,6 +49,44 @@ namespace Progetto_S17_L5.Services
             catch
             {
                 return new List<OptionOneViewModel>();
+            }
+        }
+
+        public async Task<List<OptionTwoViewModel>> OptionTwoAsync()
+        {
+            try
+            {
+                var verbalList = await _context
+                    .Verbals.GroupBy(v => v.Register.RegisterId)
+                    .Select(g => new
+                    {
+                        TotPoints = g.Sum(v => v.PointsDeduction),
+                        TrasgressorName = g.Max(v => v.Register.Name),
+                        TrasgressorSurnameName = g.Max(v => v.Register.Surname),
+                        TrasgressorFiscalCode = g.Max(v => v.Register.FiscalCode),
+                    })
+                    .ToListAsync();
+
+                var optionOneList = new List<OptionTwoViewModel>();
+
+                foreach (var item in verbalList)
+                {
+                    optionOneList.Add(
+                        new OptionTwoViewModel()
+                        {
+                            FiscalCode = item.TrasgressorFiscalCode,
+                            Name = item.TrasgressorName,
+                            Surname = item.TrasgressorSurnameName,
+                            TotPoints = item.TotPoints,
+                        }
+                    );
+                }
+
+                return optionOneList;
+            }
+            catch
+            {
+                return new List<OptionTwoViewModel>();
             }
         }
     }
