@@ -1,5 +1,41 @@
-﻿@{
+﻿@model List<OptionThreeViewModel>
+
+@{
     ViewData["Title"] = "OptionThree";
 }
 
 <h1>OptionThree</h1>
+
+@if (Model != null && Model.Count > 0)
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Amount</th>
+                <th>Surname</th>
+                <th>Name</th>
+                <th>Verbal date</th>
+                <th>Points</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var element in Model)
+            {
+                <tr>
+                    <td>@element.Amount</td>
+                    <td>@element.Surname</td>
+                    <td>@element.Name</td>
+                    <td>@element.ViolationDate.ToString("yyyy-MM-dd")</td>
+                    <td>@element.Points</td>
+                </tr>
+            }
+        </tbody>
+
+
+    </table>
+}
+else
+{
+    <p class="lead text-secondary">No results found, try again!</p>
+}

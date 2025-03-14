@@ -89,5 +89,45 @@ namespace Progetto_S17_L5.Services
                 return new List<OptionTwoViewModel>();
             }
         }
+
+        public async Task<List<OptionThreeViewModel>> OptionThreeAsync()
+        {
+            try
+            {
+                var verbalList = await _context
+                    .Verbals.Select(g => new
+                    {
+                        Points = g.PointsDeduction,
+                        TrasgressorName = g.Register.Name,
+                        TrasgressorSurnamename = g.Register.Surname,
+                        VerbalDate = g.VerbalDate,
+                        VerbalAmount = g.Amount,
+                    })
+                    .Where(v => v.Points > 10)
+                    .ToListAsync();
+
+                var optionOneList = new List<OptionThreeViewModel>();
+
+                foreach (var item in verbalList)
+                {
+                    optionOneList.Add(
+                        new OptionThreeViewModel()
+                        {
+                            Amount = item.VerbalAmount,
+                            Name = item.TrasgressorName,
+                            Surname = item.TrasgressorSurnamename,
+                            ViolationDate = item.VerbalDate,
+                            Points = item.Points,
+                        }
+                    );
+                }
+
+                return optionOneList;
+            }
+            catch
+            {
+                return new List<OptionThreeViewModel>();
+            }
+        }
     }
 }

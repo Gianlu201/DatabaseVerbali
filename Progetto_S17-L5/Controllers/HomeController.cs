@@ -40,7 +40,9 @@ public class HomeController : Controller
 
     public async Task<IActionResult> OptionThree()
     {
-        return View();
+        var result = await _homeService.OptionThreeAsync();
+
+        return View(result);
     }
 
     public async Task<IActionResult> OptionFour()
