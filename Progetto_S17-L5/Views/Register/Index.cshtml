@@ -1,0 +1,44 @@
+﻿@model RegistersListViewModel
+
+@{
+    ViewData["Title"] = "Anagrafiche";
+}
+
+<h1>Anagrafiche</h1>
+
+<div>
+    <a class="btn btn-primary" asp-controller="Register" asp-action="AddRegister">Aggiungi anagrafica</a>
+</div>
+
+@if (Model.Registers != null && Model.Registers.Count > 0)
+{
+    <div class="row">
+    @foreach (var register in Model.Registers)
+    {
+        <div class="col-4 border border-1">
+            <div class="row">
+                    <div class="col-3 d-flex align-items-center">
+                        <img src="@register.Picture" alt="register picture" class="img-fluid rounded-circle border border-1 " style="aspect-ratio: 1/1" />
+                    </div>
+
+                    <div class="col-9">
+                        <p>Name: @register.Name</p>
+                        <p>Surname: @register.Surname</p>
+                        <p>Fiscal code: @register.FiscalCode</p>
+                        <p>Address: @register.Address</p>
+                        <p>City: @register.City, @register.CAP</p>
+                    </div>
+            </div>
+        </div>
+    }
+    </div>
+
+}
+else
+{
+    <p class="lead text-secondary">No registers in database</p>
+}
+
+<div>
+
+</div>

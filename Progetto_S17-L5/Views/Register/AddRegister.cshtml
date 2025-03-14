@@ -1,0 +1,59 @@
+﻿@model AddRegisterViewModel
+
+@{
+
+    ViewData["Title"] = "Add register";
+}
+
+<h1>Aggiungi anagrafica</h1>
+
+<form method="post" asp-controller="Register" asp-action="AddRegister" enctype="multipart/form-data">
+    <div>
+        <label class="form-label" for="name" asp-for="Name"></label>
+        <input id="name" class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="surname" asp-for="Surname"></label>
+        <input id="surname" class="form-control" asp-for="Surname" />
+        <span asp-validation-for="Surname"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="address" asp-for="Address"></label>
+        <input id="address" class="form-control" asp-for="Address" />
+        <span asp-validation-for="Address"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="city" asp-for="City"></label>
+        <input id="city" class="form-control" asp-for="City" />
+        <span asp-validation-for="City"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="cap" asp-for="CAP"></label>
+        <input id="cap" class="form-control" asp-for="CAP" />
+        <span asp-validation-for="CAP"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="fiscalCode" asp-for="FiscalCode"></label>
+        <input id="fiscalCode" class="form-control" asp-for="FiscalCode" />
+        <span asp-validation-for="FiscalCode"></span>
+    </div>
+
+    <div>
+        <label class="form-label" for="picture" asp-for="Picture"></label>
+        <input type="file" id="picture" class="form-control" asp-for="Picture" />
+    </div>
+
+    <div>
+        <button class="btn btn-success">Save</button>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
