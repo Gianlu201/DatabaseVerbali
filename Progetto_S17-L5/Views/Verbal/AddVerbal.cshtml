@@ -54,6 +54,7 @@
         <div class="my-2">
             <label class="form-label" for="violationId" asp-for="ViolationId"></label>
             <select id="violationId" class="form-select" asp-for="ViolationId" asp-items="@(new SelectList(violationsList?.Violations, "ViolationId", "Description"))" multiple size="6"></select>
+            <span class="text-danger" asp-validation-for="ViolationId"></span>
             <span class="small text-secondary">Tenere premuto Ctrl per selezionare più violazioni da aggiungere al verbale</span>
         </div>
 

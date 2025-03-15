@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Progetto_S17_L5.Models;
+using Progetto_S17_L5.ValidationAttributes;
 
 namespace Progetto_S17_L5.ViewModels
 {
@@ -45,7 +46,8 @@ namespace Progetto_S17_L5.ViewModels
         public Guid RegisterId { get; set; }
 
         [Display(Name = "Violation")]
-        public List<Guid>? ViolationId { get; set; }
+        [MinItems(1, ErrorMessage = "Devi selezionare almeno un elemento.")]
+        public List<Guid> ViolationId { get; set; }
 
         // navigazione
         [ForeignKey("RegisterId")]
