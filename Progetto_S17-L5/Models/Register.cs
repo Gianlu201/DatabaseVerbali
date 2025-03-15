@@ -35,5 +35,10 @@ namespace Progetto_S17_L5.Models
 
         // navigazione
         public ICollection<Verbal>? Verbals { get; set; }
+
+        internal async Task ToListAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

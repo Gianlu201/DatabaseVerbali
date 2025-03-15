@@ -90,5 +90,102 @@ namespace Progetto_S17_L5.Services
                 return false;
             }
         }
+
+        public async Task<EditRegisterViewModel> GetRegisterByIdAsync(Guid id)
+        {
+            try
+            {
+                var register = _context.Registers.FirstOrDefault(r => r.RegisterId == id);
+
+                if (register == null)
+                {
+                    return new EditRegisterViewModel()
+                    {
+                        Name = "",
+                        Surname = "",
+                        Address = "",
+                        CAP = "",
+                        City = "",
+                        FiscalCode = "",
+                    };
+                }
+
+                var selectedRegister = new EditRegisterViewModel()
+                {
+                    RegisterId = register.RegisterId,
+                    Name = register.Name,
+                    Surname = register.Surname,
+                    Address = register.Address,
+                    City = register.City,
+                    CAP = register.CAP,
+                    FiscalCode = register.FiscalCode,
+                    PictureUrl = register.Picture,
+                };
+
+                return selectedRegister;
+            }
+            catch
+            {
+                return new EditRegisterViewModel()
+                {
+                    Name = "",
+                    Surname = "",
+                    Address = "",
+                    CAP = "",
+                    City = "",
+                    FiscalCode = "",
+                };
+            }
+        }
+
+        public async Task<bool> EditRegisterAsync(EditRegisterViewModel editRegisterViewModel)
+        {
+            try
+            {
+                var register = _context.Registers.FirstOrDefault(r =>
+                    r.RegisterId == editRegisterViewModel.RegisterId
+                );
+
+                if (register == null)
+                {
+                    return false;
+                }
+
+                register.Name = editRegisterViewModel.Name;
+                register.Surname = editRegisterViewModel.Surname;
+                register.FiscalCode = editRegisterViewModel.FiscalCode;
+                register.Address = editRegisterViewModel.Address;
+                register.City = editRegisterViewModel.City;
+                register.CAP = editRegisterViewModel.CAP;
+
+                if (editRegisterViewModel.Picture != null)
+                {
+                    var fileName = editRegisterViewModel.Picture.FileName;
+
+                    var path = Path.Combine(
+                        Directory.GetCurrentDirectory(),
+                        "wwwroot",
+                        "uploads",
+                        "images",
+                        fileName
+                    );
+
+                    await using (var stream = new FileStream(path, FileMode.Create))
+                    {
+                        await editRegisterViewModel.Picture.CopyToAsync(stream);
+                    }
+
+                    var webPath = Path.Combine("uploads", "images", fileName);
+
+                    register.Picture = webPath;
+                }
+
+                return await TrySaveChangesAsync();
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

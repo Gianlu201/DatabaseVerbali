@@ -43,5 +43,32 @@ namespace Progetto_S17_L5.Controllers
 
             return RedirectToAction("Index");
         }
+
+        [HttpGet("register/edit/{id:guid}")]
+        public async Task<IActionResult> EditRegister(Guid id)
+        {
+            var selectedRegister = await _registerService.GetRegisterByIdAsync(id);
+
+            return View(selectedRegister);
+        }
+
+        [HttpPost("register/edit/save/{id:guid}")]
+        public async Task<IActionResult> EditRegisterSave(
+            EditRegisterViewModel editRegisterViewModel,
+            Guid id
+        )
+        {
+            editRegisterViewModel.RegisterId = id;
+
+            if (!ModelState.IsValid)
+            {
+                TempData["Error"] = "Something went wrong! Check your datas and try again!";
+                return RedirectToAction("EditRegister");
+            }
+
+            var result = await _registerService.EditRegisterAsync(editRegisterViewModel);
+
+            return RedirectToAction("Index");
+        }
     }
 }

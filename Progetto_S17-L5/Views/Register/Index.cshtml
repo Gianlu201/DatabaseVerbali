@@ -21,12 +21,13 @@
                         <img src="@register.Picture" alt="register picture" class="img-fluid rounded-circle border border-1 " style="aspect-ratio: 1/1" />
                     </div>
 
-                    <div class="col-9">
-                        <p>Name: @register.Name</p>
-                        <p>Surname: @register.Surname</p>
-                        <p>Fiscal code: @register.FiscalCode</p>
-                        <p>Address: @register.Address</p>
-                        <p>City: @register.City, @register.CAP</p>
+                    <div class="col-9 py-3">
+                        <p class="my-1">Name: @register.Name</p>
+                        <p class="my-1">Surname: @register.Surname</p>
+                        <p class="my-1">Fiscal code: @register.FiscalCode</p>
+                        <p class="my-1">Address: @register.Address</p>
+                        <p class="my-1">City: @register.City, @register.CAP</p>
+                        <a asp-controller="Register" asp-action="EditRegister" asp-route-id="@register.RegisterId" class="btn btn-sm btn-warning my-2">Edit</a>
                     </div>
             </div>
         </div>
